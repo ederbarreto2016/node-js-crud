@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Node.js</a>
+    </nav>
+
+    <h1><%= title %></h1>
+
+    <a class="btn btn-success" href="/new">Novo</a>
+    <p></p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% docs.forEach(function(customer){ %>
+        <tr>
+          <td scope="row"><%= customer.nome %></td>
+          <td scope="row"><%= customer.idade %></td>
+          <td scope="row">
+            <a class="btn btn-primary" href="/edit/<%= customer._id %>">Editar</a>
+            <a class="btn btn-danger" href="/delete/<%= customer._id %>" 
+            onclick="return confirm('Tem certeza que deseja excluir?');">
+            Apagar
+          </a>
+        </td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+
+    <!-- <ul class="list-group">
+      <% docs.forEach(function(customer){ %>
+        <li lass="list-group-item">
+          <a href="/edit/<%= customer._id %>">
+            <%= customer.nome %>
+          </a>
+          <a class="btn btn-danger" href="/delete/<%= customer._id %>" 
+            onclick="return confirm('Tem certeza que deseja excluir?');">
+            Apagar
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+    <hr/> -->
+  </body>
+</html>
