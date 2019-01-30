@@ -4,15 +4,19 @@
     <title><%= title %></title>
     <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="/workshoptdc/public/js/add.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Node.js</a>
     </nav>
 
-    <h1><%= title %></h1>
-
+    <center>
+      <h1><%= title %></h1>
+    </center>
     <a class="btn btn-success" href="/new">Novo</a>
     <p></p>
     <table class="table">
@@ -40,19 +44,41 @@
       </tbody>
     </table>
 
-    <!-- <ul class="list-group">
-      <% docs.forEach(function(customer){ %>
-        <li lass="list-group-item">
-          <a href="/edit/<%= customer._id %>">
-            <%= customer.nome %>
-          </a>
-          <a class="btn btn-danger" href="/delete/<%= customer._id %>" 
-            onclick="return confirm('Tem certeza que deseja excluir?');">
-            Apagar
-          </a>
-        </li>
-      <% }) %>
-    </ul>
-    <hr/> -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Novo Cliente</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <div class="col-sm-10"> 
+            <input class="form-control" type="text" name="nome" value="" /> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Idade:</label>
+          <div class="col-sm-6"> 
+            <input class="form-control" type="number" name="idade" value="" />
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <input class="btn btn-primary" type="submit" value="Salvar" id="adicionar"/>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalLoginForm">Novo (MODAL)</a>
+  </div>
   </body>
 </html>
