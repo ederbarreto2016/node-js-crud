@@ -19,7 +19,7 @@
     </center>
     <a class="btn btn-success" href="/new">Novo</a>
     <p></p>
-    <table class="table">
+    <table class="table" id="tabela">
       <thead>
         <tr>
           <th scope="col">Nome</th>
@@ -30,8 +30,8 @@
       <tbody>
         <% docs.forEach(function(customer){ %>
         <tr>
-          <td scope="row"><%= customer.nome %></td>
-          <td scope="row"><%= customer.idade %></td>
+          <td class="info-nome" scope="row"><%= customer.nome %></td>
+          <td class="info-idade" scope="row"><%= customer.idade %></td>
           <td scope="row">
             <a class="btn btn-primary" href="/edit/<%= customer._id %>">Editar</a>
             <a class="btn btn-danger" href="/delete/<%= customer._id %>" 
@@ -54,7 +54,7 @@
         </button>
       </div>
 
-      <form id="form-adiciona">
+      <form id="form-adiciona" method="post">
         <div class="form-group">
           <label for="name">Nome:</label>
           <div class="col-sm-10"> 
@@ -65,7 +65,7 @@
         <div class="form-group">
           <label>Idade:</label>
           <div class="col-sm-6"> 
-            <input class="form-control" type="number" name="idade" value="" />
+            <input class="form-control" type="number" name="idade" value=""/>
           </div>
         </div>
       </form>
@@ -82,9 +82,45 @@
       var adicionar = document.querySelector("#adicionar"); 
       
       var form = document.querySelector("#form-adiciona");
-      var pessoa = 
 
-      alert(adicionar.value);
+      var cliente = obtemClienteDoFormulario(form);
+
+      adicionaClienteNaTabela(cliente);
+      form.reset();
+
+    }
+
+    function adicionaClienteNaTabela(cliente){
+      var clienteTr = montaTr(cliente);
+      var tabela = document.querySelector("#tabela");
+      tabela.appendChild(clienteTr);
+    }
+
+    function obtemClienteDoFormulario(form){
+      var cliente = {
+        nome: form.nome.value,
+        idade: form.idade.value
+      }
+
+      return cliente;
+    }
+
+    function montaTr(cliente){
+      var clienteTr = document.createElement("tr");
+      clienteTr.classList.add("cliente");
+
+      clienteTr.appendChild(montaTd(cliente.nome, "info-nome"));
+      clienteTr.appendChild(montaTd(cliente.idade, "info-idade"));
+      
+      return clienteTr;
+    }
+
+    function montaTd(dado, classe){
+      var td = document.createElement("td");
+      td.textContent = dado;
+      td.classList.add(classe);
+
+      return td;
     }
   </script>
 

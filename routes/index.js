@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   global.db.findAll((e, docs) => {
     if(e) {return console.log(e); }
-    res.render('index', {title: 'Lista de Clientes', docs: docs });
+    res.render('index', {title: 'Lista de Clientes', docs: docs});
   })
 });
 
